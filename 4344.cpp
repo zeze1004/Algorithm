@@ -20,12 +20,13 @@ int main() {
    
     int n, score;
     float student,avg, count;
-    count = 0.0;
-    vector <float> v;
+    count = 0;
+    cout << "모가 문젠데" << '\n';
 
     cin >> n;
     for(int i =0; i<n; i++) {
-        v.clear(); //벡터의 모든 원소 제거(초기화)
+        vector <float> v;
+        //v.clear(); //벡터의 모든 원소 제거(초기화)
         cin >> student;
         cout << v[i] << " " ;
         for(int i =0; i< student; i++) {
@@ -39,8 +40,10 @@ int main() {
                 count++;
             }
         }
-        cout.precision(5);
-        cout << (float)(count / student)*100 << "%" << '\n';
+        cout<<fixed;
+        cout.precision(3);
+        cout << ((float)count / (float)student)*100 << "%" << '\n';
+        delete &v;
 
     }
 
