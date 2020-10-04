@@ -25,6 +25,7 @@ int main() {
 
     cin >> n;
     for(int i =0; i<n; i++) {
+        v.clear(); //벡터의 모든 원소 제거(초기화)
         cin >> student;
         cout << v[i] << " " ;
         for(int i =0; i< student; i++) {
@@ -39,8 +40,7 @@ int main() {
             }
         }
         cout.precision(5);
-        cout << (count / student)*100 << "%" << '\n';
-        v.clear(); //벡터의 모든 원소 제거(초기화)
+        cout << (float)(count / student)*100 << "%" << '\n';
 
     }
 
