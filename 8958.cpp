@@ -1,36 +1,40 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <string>
 using namespace std;
 
 int main() {
+
     ios_base :: sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n, sum;
-    sum = 0;
-    char ox;
-    vector <char> v;
+    int n;
+    int sum = 0;
+    int count = 0;
+    string ox;
+
     cin >> n;
-    for(int i = 0; i<n; i++) {
-        /*
+    for(int i = 0; i < n; i++) {
+
         cin >> ox;
-        v.push_back(ox);
-        if(v[i]==v[i+1]=='O'){
-            sum++;
-            sum += sum;
+        // 초기화 매우 중요!!!
+        count = 0;
+        sum = 0;
+        for (int i = 0; i < (int)(ox.size()); i++) {
+            if(ox[i] == 'O') {
+                count++;
+                sum += count;
+                /*
+                cout << "ox[" <<i <<"] " << ox[i] << '\n';
+                cout << "count: " << count  <<'\n';
+                cout << "sum: "  << sum << '\n';
+                */
+            }
+            else
+                count = 0;
         }
-        */
-       while(1) {
-           cin >> ox;
-           v.push_back(ox);
-           if(cin.eof()) 
-            break; 
-       }
+        cout << sum << '\n';
     }
-    cout << sum;
-
-
     return 0;
 }
