@@ -26,7 +26,7 @@ int main() {
         }
         cin >> input;
         while(1) {
-            if(input.size() < 1 || n > 20) {
+            if(input.size() < 1 || input.size() > 20) {
                 cin >> input;
             } else break;    
         }
