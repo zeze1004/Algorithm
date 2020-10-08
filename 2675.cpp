@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
 
 
@@ -10,25 +10,32 @@ int main() {
     cout.tie(NULL);
 
     int n, case_n;
-    string input;
-    cin >> n;
-    while(1) {
-        if(n<1 || n>1000) {
-            cin >> n;
-        } else break;    
-    }
+    char input[21];
+
+   for(int i = 0; i < 1; i++) {
+       cin >> n;
+       if (n < 1 || n > 1000) {
+           i--;
+           continue;
+       }
+   }
     for(int i = 0; i<n; i++) {
+
+        for(int q = 0; q < 1; q++) {
         cin >> case_n;
-        while(1) {
-            if(case_n < 1 || case_n > 8) {
-                cin >> case_n;
-            } else break; 
+        if (case_n < 1 || case_n > 8) {
+            i--;
+            continue;
         }
-        cin >> input;
-        while(1) {
-            if(input.size() < 1 || input.size() > 20) {
-                cin >> input;
-            } else break;    
+    }
+        
+        //cout << strlen(input) << '\n';
+        for(int q = 0; q < 1; q++) {
+            cin >> input;
+            if (strlen(input) < 1 || strlen(input) > 8) {
+                i--;
+                continue;
+            }
         }
         for(int j = 0; j < case_n; j++) {
             for(int k =0; k < case_n; k++)
