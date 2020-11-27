@@ -3,23 +3,21 @@
 using namespace std;
 
 int main() {
-    cout << "test-1" << '\n';
     ios_base :: sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int case_n, student;
+    int case_n, student, input;
     vector <int> v;
-    cout << "test0" << '\n';
     float avg = 0;
     int result = 0, count = 0;
     cin >> case_n;
-    cout << "test1" << '\n';
     for(int i = 0; i < case_n; i++) {
         count = 0;
         cin >> student;
         for(int j = 0; j < student; j++) {
-            cin >> v[j];
+            cin >> input;
+            v.push_back(input);
             result += v[j];
         }
         avg = result/ case_n;
@@ -34,7 +32,7 @@ int main() {
     return 0;
 }
 
-
+/*
 int main(){
     int n;
     scanf("%d", &n);
@@ -56,3 +54,4 @@ int main(){
         printf("%.3f%%\n", (float)count/num*100);
     }
 }
+*/
