@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <numeric>
+#include <algorithm>
+#include <cmath>
 using namespace std;
 
 int main() {
@@ -7,51 +10,29 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int case_n, student, input;
-    vector <int> v;
-    float avg = 0;
-    int result = 0, count = 0;
-    cin >> case_n;
-    for(int i = 0; i < case_n; i++) {
-        count = 0;
+    int n,student,input,sum,check = 0;
+    float avg, result;
+    vector <float> v;
+    cin >> n;
+    for(int i = 0; i < n; i++) {
         cin >> student;
+        v.clear(); // 벡터 초기화
         for(int j = 0; j < student; j++) {
             cin >> input;
             v.push_back(input);
-            result += v[j];
         }
-        avg = result/ case_n;
-        for(int k = 0; k < case_n; k++) {
+        for(int k = 0; k < student; k++) {
+            avg = float(accumulate(v.begin(), v.end(), 0) / student);
             if(v[k] > avg) {
-                count++;
+                check++;
             }
-            cout <<  (float)count/case_n << "%" << '\n';
         }
+        // 소수점 아래 3개만 출력
+        cout << fixed;
+        cout.precision(3);
+        //cout << student << " ";
+        cout << (float)check/student * 100 << "%" << '\n';
+        check = 0; // 초기화
     }
-
     return 0;
 }
-
-/*
-int main(){
-    int n;
-    scanf("%d", &n);
-    for(int i  = 0; i < n; i++)
-    {
-        int num, sum = 0,count = 0;
-        double avg;
-        scanf("%d", &num);
-        int arr[num];
-        for(int j = 0; j < num; j ++)
-        {
-            scanf("%d", &arr[j]);
-            sum+=arr[j];
-        }
-        avg = sum/num;        
-        for(int k = 0; k < num; k ++)
-            if(avg < arr[k])
-                count++;
-        printf("%.3f%%\n", (float)count/num*100);
-    }
-}
-*/
