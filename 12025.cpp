@@ -17,15 +17,13 @@ int main()
 		if (password[i] == '1' || password[i] == '2' || password[i] == '6' || password[i] == '7')
 		{
 			num = num * 2;
-			if (password[i] == '6')
+			if (password[i] == '6' || password[i] == '7')
 			{
 				password[i] = '1';
-				// cout << "6->1 " << password << '\n';
 			}
-			else if (password[i] == '7')
+			if (password[i] == '7')
 			{
 				password[i] = '2';
-				// cout << "7->2 " << password << '\n';
 			}
 		}
 	}
@@ -50,19 +48,17 @@ int main()
 				if (password[i] == '1')
 				{
 					password[i] = '6';
-					// cout << "1->6 password: " << password << '\n';
 				}
 				else if (password[i] == '2')
 				{
 					password[i] = '7';
-					// cout << "2->7 password: " << password << '\n';
 				}
 			}
 
 			// 한 자리 수만 바뀐 채 나머지 숫자들은 그대로야 사전식으로 나열 가능
 			// 예시의 67이 12, 17, 62, 67 순으로 바뀜
 			// 홀수번째부터 앞자리 변하니(힌트 예시) k를 2로 나눠줌
-			k /= 2;
+			k = k / 2;
 		}
 	}
 	cout << password << '\n';
