@@ -5,9 +5,9 @@ int N;
 int building[51];
 
 // 기울기 구하기
-double slope(int near, int center)
+double slope(int near, int std)
 {
-	return ((double)(building[near] - building[center]) / (near - center));
+	return ((double)(building[near] - building[std]) / (near - std));
 }
 
 int main()
@@ -18,7 +18,7 @@ int main()
 
 	double Mslope_std, Mslope, Pslope_std, Pslope;
 	int i, j, k;
-	int num[51] = {0};
+	int num[51] = {0}; // 각 빌딩 별 볼 수 있는 건물 수
 	cin >> N;
 
 	for (i = 1; i <= N; i++)
@@ -34,7 +34,7 @@ int main()
 		if (i > 1)
 		{
 			num[i]++;											// 자기 옆은 무조건 볼 수 있음
-			Mslope_std = slope(i - 1, i); // 처음 기준 기울기는 바로 옆
+			Mslope_std = slope(i - 1, i); // 처음 기준 기울기는 바로 옆 건물과 기준 건물의 기울기
 			for (j = i - 2; j >= 1; j--)
 			{
 				Mslope = slope(j, i);
@@ -63,6 +63,7 @@ int main()
 			}
 		}
 	}
+
 	// 최댓값 출력
 	int max = num[1];
 	for (i = 2; i <= N; i++)
