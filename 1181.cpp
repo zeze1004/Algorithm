@@ -34,14 +34,14 @@ int main()
 			{
 				for (int k = 0; k < arr[i].length(); k++)
 				{
-					if (arr[i][k] - arr[j][k] < 0)
-						i++;
-					else if (arr[i][k] - arr[j][k] > 0)
+					// 두 문자열의 다른 알파벳을 찾았을 때
+					if (arr[i][k] != arr[j][k])
 					{
-						tmp = arr[i];
-						arr[i] = arr[j];
-						arr[j] = tmp;
-						k = arr[i].length();
+						// arr[j][k]가 더 뒤에 나올 때
+						if (arr[i][k] < arr[j][k])
+						{
+							j++;
+						}
 					}
 				}
 			}
