@@ -1,21 +1,23 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
-	int N, input;
-	vector<int> vec;
+	ios_base ::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	int N, arr[10001] = {0}, input;
 	cin >> N;
 	for (int i = 0; i < N; i++)
 	{
 		cin >> input;
-		vec.push_back(input);
+		arr[input]++;
 	}
-	sort(vec.begin(), vec.end());
-	for (int i = 0; i < N; i++)
+	for (int i = 1; i <= 10000; i++)
 	{
-		cout << vec[i] << '\n';
+		for (int j = 0; j < arr[i]; j++) // arr[i] = 0이면 어차피 for문 안 돌아감
+		{
+			cout << i << '\n';
+		}
 	}
 }
