@@ -37,6 +37,7 @@ main()
 		// 가방의 무게보다 작은 보석들을 다 집어넣음
 		while (index < jewel_num && vec[index].first <= bag[i])
 		{
+			// 우선순위 큐는 내림차순
 			pq.push(vec[index++].second);
 		}
 		if (!pq.empty())
