@@ -40,6 +40,7 @@ int main()
 			visit_check[curent_node] = true; // 방문한 노드 true로 갱신
 			for (int k = 0; k < vec[curent_node].size(); k++)
 			{
+				cout << k << " size: " << vec[curent_node].size() << '\n';
 				int next = vec[curent_node][k].first;
 				// 현재 노드의 최소 비용에서 그 노드에서 목적지 노드로 가는 비용이
 				// 현재 목적지 노드로 가는 비용보다 작다면 갱신

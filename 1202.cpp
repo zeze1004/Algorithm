@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-// m 무게, v 가격, w =1이면 보석, 0이면 가방
+
 main()
 {
 	ios_base ::sync_with_stdio(false);
