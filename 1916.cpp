@@ -2,8 +2,6 @@
 #include <vector>
 #include <queue>
 
-#define PAIR pair<int, int>
-
 using namespace std;
 
 vector<pair<int, int>> vec[1001];					// (destination, cost) 저장
@@ -19,7 +17,7 @@ int main()
 	for (int i = 0; i < M; i++)
 	{
 		cin >> start >> destination >> cost;
-		a[start].push_back(make_pair(destination, cost));
+		vec[start].push_back(make_pair(destination, cost));
 	}
 	cin >> goal_start >> goal_destination;
 	for (int i = 1; i <= N; i++)
