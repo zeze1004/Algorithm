@@ -41,7 +41,7 @@ main()
 		}
 		if (!pq.empty())
 		{
-			output += pq.top();
+			output += pq.top(); // 제일 비싼 가격
 			pq.pop();
 		}
 	}

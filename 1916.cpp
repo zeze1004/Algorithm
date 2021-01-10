@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<pair<int, int>> vec[1001];					// (destination, cost) 저장
+vector<pair<int, int>> vec[1001];					// (node, cost) 저장
 int shortest_dist[1001], inf = 100000000; // 최단거리 저장, 무한대(연결되지 않는 노드는 계속 무한대로, 갱신 되지 않음)
 bool visit_check[1001];										// 디폴트 false, 방문한 곳은 true
 
@@ -40,13 +40,13 @@ int main()
 			visit_check[curent_node] = true; // 방문한 노드 true로 갱신
 			for (int k = 0; k < vec[curent_node].size(); k++)
 			{
-				int destination_node = vec[curent_node][k].first;
+				int next = vec[curent_node][k].first;
 				// 현재 노드의 최소 비용에서 그 노드에서 목적지 노드로 가는 비용이
 				// 현재 목적지 노드로 가는 비용보다 작다면 갱신
-				if (shortest_dist[destination_node] > shortest_dist[curent_node] + a[curent_node][k].second)
+				if (shortest_dist[next] > shortest_dist[curent_node] + vec[curent_node][k].second)
 				{
-					shortest_dist[destination_node] = shortest_dist[curent_node] + a[curent_node][k].second;
-					q.push(make_pair(shortest_dist[destination_node], destination_node));
+					shortest_dist[next] = shortest_dist[curent_node] + vec[curent_node][k].second;
+					q.push(make_pair(shortest_dist[next], next));
 				}
 			}
 		}
