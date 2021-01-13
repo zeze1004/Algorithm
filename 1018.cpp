@@ -1,47 +1,76 @@
 #include <iostream>
 #include <string>
-
+#include <algorithm>
 using namespace std;
-
-int main()
+const int MAX = 50;
+string chess[MAX];
+int N, M;
+string whiteFirst[8] = {
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"}};
+string blackFirst[8] = {
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"},
+		{"BWBWBWBW"},
+		{"WBWBWBWB"}};
+int countWhiteFirst(int y, int x)
 {
-	char chess[250];
-	int y, x, w_num = 0, b_num = 0, i = 0, j = 0;
-	cin >> y >> x;
-	for (int i = 0; i < x * y; i++)
+	int cnt = 0;
+	//y,x에서 +8까지 바꿔야하는 수를 count.
+	for (int i = y; i < y + 8; i++)
 	{
-		cin >> chess[i];
-	}
-
-	// 시작이 w인 체스판
-	for (i; i < x * y; i++)
-	{
-		for (j = i; j < 64 + i; j++)
+		for (int j = x; j < x + 8; j++)
 		{
-			if (j - 8)
+			if (chess[i][j] != whiteFirst[i - y][j - x])
 			{
-				if (chess[j] != 'B' && chess[j] != 'W')
-					break;
-				if (i % 2 == 0) // i가 짝수일 때
-				{
-					if (k % 2 == 0)
-					{
-						if (chess[i] != 'W')
-						{
-							w_num++;
-						}
-					}
-					else
-					{
-						if (chess[i] != 'B')
-						{
-							w_num++;
-						}
-					}
-				}
+				cnt++;
 			}
 		}
 	}
-	cout << w_num;
+	return cnt;
+}
+int countBlackFirst(int y, int x)
+{
+	int cnt = 0;
+	//y,x에서 +8까지 바꿔야하는 수를 count.
+	for (int i = y; i < y + 8; i++)
+	{
+		for (int j = x; j < x + 8; j++)
+		{
+			if (chess[i][j] != blackFirst[i - y][j - x])
+			{
+				cnt++;
+			}
+		}
+	}
+	//return cnt
+	return cnt;
+}
+int main()
+{
+	cin >> N >> M;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> chess[i];
+	}
+	int result = 99999999;
+	for (int i = 0; i + 7 < N; i++)
+	{
+		for (int j = 0; j + 7 < M; j++)
+		{
+			result = min(result, min(countWhiteFirst(i, j), countBlackFirst(i, j)));
+		}
+	}
+	cout << result << endl;
 	return 0;
 }
