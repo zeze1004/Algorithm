@@ -9,7 +9,7 @@ int main()
 	int month, int_day, count = 0;
 	cin >> month >> int_day;
 
-	for (int i = 0; i <= month; i++)
+	for (int i = 1; i <= month; i++)
 	{
 		if (i == month)
 		{
