@@ -3,18 +3,14 @@ using namespace std;
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-	unsigned int A, B, V, a, b;
+	int A, B, V;
 	cin >> A >> B >> V;
-	a = A, b = B;
-	for (int i = 1; i <= V; i++)
-	{
-		if ((a - b) * (i - 1) + a >= V)
-		{
-			cout << i;
-			break;
-		}
-	}
+	int day;
+
+	if ((V - A) % (A - B) == 0)
+		day = (V - A) / (A - B);
+	else
+		day = (V - A) / (A - B) + 1;
+
+	cout << day + 1;
 }

@@ -1,41 +1,45 @@
 #include <iostream>
+#include <vector>
+#include <cmath>
 #include <algorithm>
 using namespace std;
 
-int main()
+int main(void)
 {
-	int N, arr[500001] = {0}, same_arr[250001] = {0}, num, sum = 0, same = 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int N, temp, mean, mode = 0, min, max = 0;
+	bool isSecond = false;
 	cin >> N;
+	vector<int> vec(N);
+	vector<int> vec2(8001, 0);
 	for (int i = 0; i < N; i++)
 	{
-		cin >> num;
-		arr[i] = num;
-		sum += num;
+		cin >> vec[i];
+		mean += vec[i];
+		temp = (vec[i] <= 0) ? abs(vec[i]) : vec[i] + 4000;
+		vec2[temp]++;
+		if (vec2[temp] > max)
+			max = vec2[temp];
 	}
-	sort(&arr[0], &arr[N]);
-	cout << sum / N << '\n'
-			 << arr[(N / 2) + 1] << '\n';
-	for (int i = 0; i < N; i++)
+	sort(vec.begin(), vec.end());
+
+	for (int i = -4000; i < 4001; i++)
 	{
-		// 중복된 값이 있을 경우
-		if (find(arr, arr + N, arr[i]) != arr + N)
+		temp = i <= 0 ? abs(i) : i + 4000;
+		if (vec2[temp] == max)
 		{
-			same++;
-			same_arr[i] = arr[i];
+			mode = i;
+			if (isSecond)
+				break;
+			isSecond = true;
 		}
 	}
-	if (same >= 1)
-	{
-		for (int i = 0; i < N; i++)
-		{
-			if (same == 1 && same_arr[i] != 0)
-			{
-				cout << same_arr[i] << '\n';
-			}
-			else if (same > 1 && same_arr[])
-		}
-	}
-	// 중복 되는 값이 없으면 두 번째로 작은 값 출력
-	else
-		cout << arr[1] << '\n';
+
+	cout << round(mean / (double)N) << '\n';
+	cout << vec[round(N / 2)] << '\n'; // 반올림 round()
+	cout << mode << '\n';
+	min = vec[0];
+	max = vec[vec.size() - 1];
+	cout << max - min;
 }
