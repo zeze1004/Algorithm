@@ -33,4 +33,3 @@ int main()
 	cout << prime[K];
 	return 0;
 }
-dsafdsfa
