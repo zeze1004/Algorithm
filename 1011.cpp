@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 int main()
@@ -7,29 +8,22 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int T, x, y, output, j;
+	long long T, x, y, res;
 	cin >> T;
 	for (int i = 0; i < T; i++)
 	{
 		cin >> x >> y;
-		output = 1, j = 1;
-		for (j; j <= (y - 2) - x; j++)
+		// 마지막 이동: 1
+		// 마지막 전 이동: 최대 2
+		// 마지막 전전 이동: 최대 3
+		// 1 -> 2 -> ... -> 3 -> 2 -> 1
+		res = y - x + 1;
+		if (res <= 4)
 		{
-			if (j + output <= (y - 2) - x)
-			{
-				output++;
-				// cout << output << '\n';
-			}
-			if (j == (y - 1) - x)
-			{
-				if (output >= 1)
-				{
-					output = 1;
-				}
-			}
 		}
-		cout << j + 1 << '\n';
+		else
+		{
+		}
 	}
-
 	return 0;
 }
