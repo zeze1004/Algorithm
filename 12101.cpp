@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 using namespace std;
 
 #define max 987654321
@@ -9,14 +10,13 @@ int main()
 {
 	ios_base ::sync_with_stdio(false);
 	cin.tie(NULL);
-	// 흠 이걸 어케하지
-	// 완전 탐색 결과를 배열에 저장...
-	// 원소 하나하나 저장?
-	// 흠
+	// 1,2,3 만으로 합을 만들어야 함
 	long long num, arr[max];
 	vector<int> vec;
 	cin >> num;
-
+	// 고민 중...
+	// 3중 반복문이 최선인 것인가
+	// 배열을 만들고 num이 되면 출력
 	while (1)
 	{
 	}
