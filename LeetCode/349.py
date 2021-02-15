@@ -7,4 +7,3 @@ class Solution:
                     result.add(n1)
 
         return result
-        #
