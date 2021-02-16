@@ -11,7 +11,7 @@ int main()
 
 	int num, input;
 	string str;
-	vector<int> vec;
+	vector<bool> vec(21, false);
 	vector<int>::iterator iter;
 	cin >> num;
 	while (num--)
@@ -20,20 +20,17 @@ int main()
 		if (str == "add")
 		{
 			cin >> input;
-			vec.push_back(input);
+			vec[input] = true;
 		}
 		if (str == "remove")
 		{
 			cin >> input;
-			iter = find(vec.begin(), vec.end(), input);
-			if (iter != vec.end())
-				vec.erase(iter);
+			vec[input] = false;
 		}
 		if (str == "check")
 		{
 			cin >> input;
-			iter = find(vec.begin(), vec.end(), input);
-			if (iter != vec.end())
+			if (vec[input] == true)
 				cout << 1 << '\n';
 			else
 				cout << 0 << '\n';
@@ -41,20 +38,18 @@ int main()
 		if (str == "toggle")
 		{
 			cin >> input;
-			iter = find(vec.begin(), vec.end(), input);
-			if (iter != vec.end())
-				vec.erase(iter);
+			if (vec[input] == true)
+				vec[input] = false;
 			else
-				vec.push_back(input);
+				vec[input] = true;
 		}
 		if (str == "all")
 		{
-			vec.clear();
-			vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+			vec = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
 		}
 		if (str == "empty")
 		{
-			vec.clear();
+			vec = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 		}
 	}
 
