@@ -1,14 +1,18 @@
 #include <iostream>
 using namespace std;
 
-int dp[100];
+// 0으로 초기화
+int dp[21] = {0};
 
 int fibo(int n)
 {
 	if (n <= 2)
 	{
+		if (n == 0)
+			return 0;
 		return 1;
 	}
+	// 값이 이미 있다면 추가로 연산(재귀, fibo 함수 호출)하지 말고 함수 끝냄
 	if (dp[n] != 0)
 	{
 		return dp[n];
