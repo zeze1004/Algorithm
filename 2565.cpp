@@ -38,3 +38,5 @@ int main()
 	cout << num - result << '\n';
 	return 0;
 }
+
+// 민망하니깐 pass^^
