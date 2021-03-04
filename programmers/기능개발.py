@@ -5,7 +5,7 @@ def solution(progresses, speeds):
     bapo = 0
 
     # 리스트 empty 될 때까지 반복
-    while len(progresses) > 0:
+    while progresses:
         # 완성 시
         if (progresses[0] + time*speeds[0]) >= 100:
             progresses.pop(0)
