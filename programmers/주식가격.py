@@ -1,10 +1,13 @@
+from collections import deque
+
+
 def solution(prices):
     answer = []
-
-    while prices:
-        price = prices.pop(0)
+    prices_que = deque(prices)
+    while prices_que:
+        price = prices_que.popleft()
         second = 0
-        for i in prices:
+        for i in prices_que:
             second += 1
             # 리스트 요소들보다 클 시 반복문 탈출
             if price > i:
