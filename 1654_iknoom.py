@@ -14,9 +14,9 @@ for i in range(num):
     tmp = int(input())
     arr.append(tmp)
 
-# 0 ~ 가장 큰 랜선
-right = 10**18
-left = 1
+# 1 ~ 가장 큰 랜선
+right = 10**18  # max(arr)도 가능
+left = 1        # 0은 절대 될 수 없는 수이므로 넣으면 x
 
 # left가 right보다 크면 탐색 끝났으므로 종료
 while left + 1 < right:
