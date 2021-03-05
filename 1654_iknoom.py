@@ -25,9 +25,8 @@ while left + 1 < right:
 
     if max_len(mid) >= goal:
         left = mid
-        print('left ', left)
+
     else:
         right = mid
-        print('right ', right)
 
 print(left)
