@@ -8,19 +8,15 @@ if win_rate >= 99:
     exit(0)
 
 left, right = 0, 1000000000
-while left <= right:
+while left + 1 < right:
     mid = (left + right) // 2
-    # print(mid)
-    win_rate_tmp = ((win_num + mid) * 100 // game_num + mid)
-    print(win_rate_tmp)
+    win_rate_tmp = ((win_num + mid) * 100 // (game_num + mid))
     if win_rate >= win_rate_tmp:
-        left = mid + 1
-        result = mid + 1
-
+        left = mid
     else:
-        right = mid - 1
+        right = mid
 
-print(left)
+print(right)
 
 
 # 완전탐색
