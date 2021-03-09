@@ -7,14 +7,18 @@ if win_rate >= 99:
     print(-1)
     exit(0)
 
-left, right = 0, 1000000000
+left, right = 0, 100
 while left + 1 < right:
     mid = (left + right) // 2
+    # print(mid)
     win_rate_tmp = ((win_num + mid) * 100 // (game_num + mid))
+    # print(win_rate_tmp)
     if win_rate >= win_rate_tmp:
         left = mid
+        # print('left')
     else:
         right = mid
+        # print('right')
 
 print(right)
 
