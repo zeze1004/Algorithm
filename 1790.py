@@ -1,20 +1,24 @@
-# k가 최대 10억이므로 문자열로 만든 후 k번째 수 찾기 너무 오래 걸림
+n, k = map(int, input().split())
 
-N = input()
+start = 1  # 시작 수
+digits = 1  # 자릿수
 
-print(N)
-print(type(N))
-# def make_ten(mid):
-#     count = 0
-#     while mid >= 10:
-#         mid = mid // 10
-#         count += 1
-#     return count + 1
+# 해당 시작 자리수범위 보다 클 경우 그 개수만큼 차감
+while(k > (9*start)*digits):
+    tmp = (9*start)*digits
+    start *= 10
+    digits += 1
+    k -= tmp
 
-
-# left, right = 1, K
-# while left + 1 < right:
-#     mid = (left + right) // 2
-
-#     if mid >= 10:
-#         ten_num = make_ten(mid)
+leave = k % digits  # 나머지
+num = k//digits  # start 에서부터의 인덱스
+if leave == 0:
+    if(n < start+num-1):
+        print(-1)
+        exit()
+    print(int(str(start+num-1)[-1]))
+else:
+    if(n < start+num):
+        print(-1)
+        exit()
+    print(int(str(start+num)[leave-1]))
