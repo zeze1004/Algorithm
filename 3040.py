@@ -5,8 +5,7 @@ for i in range(9):
 sum_arr = sum(arr)
 
 for i in range(9):
-    for j in range(1, i+1):
-        # print(i+1)
+    for j in range(i+1):
         if sum_arr - (arr[i] + arr[j]) == 100:
             remove_val1 = arr[i]
             remove_val2 = arr[j]
