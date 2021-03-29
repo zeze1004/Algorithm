@@ -1,6 +1,23 @@
-num, goal = map(int, input().split())
+num = int(input())
+arr = []
+circle = []
+for _ in range(num):
+    arr.append(int(input()))
 
-arr = list(map(int, input().split()))
+for i in range(1, 56):
+    circle.append((i*(i+1))//2)
 
-for i in arr:
-    if arr
+
+def brute(num):
+    for i in circle:
+        for j in circle:
+            for k in circle:
+                if i + j + k == num:
+                    return True
+
+
+for num in arr:
+    if brute(num):
+        print(1)
+    else:
+        print(0)
