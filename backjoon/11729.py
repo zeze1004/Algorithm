@@ -1,11 +1,11 @@
 def hanoi(num, _from, tmp, to):
     if num == 1:
-        print(_from, to, end = ' ')
-        print()
+        print(_from, to)
+        
     else:
         hanoi(num - 1, _from, to, tmp)
-        print(_from, to, end = ' ')
-        print()
+        print(_from, to)
+        
         hanoi(num - 1, tmp, _from, to)
 
 hanoi_num = int(input())
