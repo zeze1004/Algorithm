@@ -1,18 +1,9 @@
-n, m = int(input().split())
-check = [0] * (num + 1)  # 넉넉하게
+from itertools import combinations 
 
+end_num, size = map(int, input().split()) 
+combination = combinations(range(1, end_num + 1), size) 
 
-def DFS(value):
-    if value == num + 1:
-        for i in range(1, num + 1):
-            if check[i] == 1:
-                print(i, end=" ")
-        print()
-    else:
-        check[value] = 1  # 사용한다
-        DFS(value + 1)
-        check[value] = 0
-        DFS(value + 1)
+for i in combination: 
+    # print(*i)
+    print(' '.join(map(str, i)))
 
-
-DFS(1)
