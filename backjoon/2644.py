@@ -1,60 +1,35 @@
 import sys
 
 input = sys.stdin.readline
-sys.setrecursionlimit(10 ** 6)
 
-people_num = int(input())
-start, end = map(int, input().split())
-line_num = int(input())
+family_num = int(input())
 
-tree = [[] for _ in range(people_num + 2)]
-table = {}
-check = [False] * (people_num + 2)
+first, goal = map(int, input().split())
 
-def dfs(v):
-    check[v] = True
-    for i in tree[v]:
-        if not check[i]:
-            # print(i)
-            table[i] = v
+connecting_num = int(input())
+
+family_list = [[] for _ in range(family_num + 1)]
+visted_list = [0] * (family_num + 1) # 가족이 1부터 시작하므로 가족 개수보다 하나 더 필요
+
+for _ in range(connecting_num):
+    one, two = map(int, input().split())
+    family_list[one].append(two)
+    family_list[two].append(one)
+
+# print(family_list)
+
+def dfs(before):
+    # global family_one
+    for i in family_list[before]:
+        # one이 아니고 방문한 적이 없음
+        if i != first and visted_list[i] == 0:
+            # 처음 방문한 one부터 방문 개수가 하나 씩 증가
+            visted_list[i] = visted_list[before] + 1
             dfs(i)
 
-for _ in range(line_num):
-    a, b = map(int, input().split())
-    tree[a].append(b)
-    tree[b].append(a)
-print(tree)
+dfs(first)
 
-dfs(1)
-
-
-for i in range(len(check)):
-    if check[i] == False:
-        dfs(i)
-
-print(table)
-
-count = 1
-# 출력
-
-for i in range(2, people_num - 1):
-    tmp = table.get(start)
-    if table[tmp] == table.get(end):
-        print(count)
-        break
-    else:
-        count += 1
-
-# for key, value in table.items():
-#     tmp = table.get(start)
-#     if tmp == end:
-#         count += 1
-#         print(count)
-#     elif table
-        
-    
-
-
-# for i in range(2, num + 1):
-#     if i in table:
-#         print(table[i])
+if visted_list[goal] == 0:
+    print(-1)
+else:
+    print(visted_list[goal])
