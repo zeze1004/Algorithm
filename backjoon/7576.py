@@ -24,7 +24,7 @@ def bfs(y, x):
 
         if (0 <= move_x < garo) and (0 <= move_y < sero) and tomato[move_y][move_x] == 0:
             tomato[move_y][move_x] = 2
-            count = count + 1
+            # count = count + 1
             bfs(move_y, move_x)
         elif (0 <= move_x < garo) and (0 <= move_y < sero) and tomato[move_y][move_x] == -1:
             return
@@ -37,7 +37,9 @@ for i in range(sero):
 for y in range(sero):
     for x in range(garo):
         if tomato[y][x] == 1:
+            count = count + 1
             bfs(y, x)
+
 
 
 print(count)
