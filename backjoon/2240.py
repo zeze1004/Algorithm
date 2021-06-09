@@ -22,7 +22,7 @@ for i in range(1, second + 1):
         if j > i:
             break
 
-        # 자두가 1번에서 떨어지고                받아먹기
+        # 자두가 1번에서 떨어지고 받아먹기
         if tree[i] == 1 and j % 2 == 0: # 1번 나무 부터 시작하니깐 짝수번 이동하면 1번 나무로 컴백
             # dp[i - 1][j]: 지금 이동해서 먹기
             # dp[i - 1][j - 1]: 전에 이동하고 가만히 있다가 먹기
@@ -33,9 +33,11 @@ for i in range(1, second + 1):
         elif tree[i] == 2 and j % 2 == 1:
             dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1]) + 1
         
-        # 안 먹는 경우(가만히 있거나 피해서 안 먹는 경우)
+        # 안 먹는 경우
+        # dp[i - 1][j]: 피해서 안 먹기
+        # dp[i - 1][j - 1]: 전에 이동하고 가만히 있기
         else:
             dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1])
-print(dp[-1])
+print(max(dp[-1]))
 
 
