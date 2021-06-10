@@ -6,7 +6,7 @@ second, move_num = map(int, input().split())
 jadu_tree = [0]
 for i in range(1, second + 1):
     jadu_tree.append(int(input()))
-# print(jadu_tree)
+
 # get_jadu_num = [[가만히 있을 때 1번 나무에서 받은 자두,짝수 번 움직여서 1번 나무에서 받은 + 안 받은, 홀수 번 움직여서 2번 나무에서 받은 + 안 받은]]
 jadu_bucket = [[0] * (move_num + 1) for _ in range(second + 1)]
 
@@ -37,5 +37,6 @@ for tree_num in range(1, len(jadu_tree)):
         else:
             jadu_bucket[tree_num][moving] = max(jadu_bucket[tree_num - 1][moving], jadu_bucket[tree_num - 1][moving - 1])
 
+# 마지막 자두 버켓에 담은 자두의 경우의 수 중 제일 큰 수 출력
 print(max(jadu_bucket[-1]))
 
