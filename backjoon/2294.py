@@ -5,7 +5,7 @@ input = sys.stdin.readline
 coin_num, goal_num = map(int, input().split())
 coins = [int(input()) for _ in range(coin_num)]
 
-# 15까지 동전들로 만들 수 있는 최소 동전 개수 저장 리스트
+# 목표 수(goal_num)까지 동전들로 만들 수 있는 최소 동전 개수 저장 리스트
 min_coin = [0 for _ in range(goal_num + 1)]
 
 for i in range(1, goal_num + 1):
