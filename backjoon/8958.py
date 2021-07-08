@@ -7,7 +7,7 @@ for i in range(num):
     flag = 0
     score = 0
     total_score = 0
-    for j in input_list:
+    for j in range(len(input_list)):
         print(j)
         # 처음 O 시작
         if j == 'O' and flag == 0:
