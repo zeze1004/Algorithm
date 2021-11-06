@@ -21,8 +21,9 @@ class Solution:
                 right += 1
             else:
                 right = 0
-
+            # 제일 긴 거리 저장
             self.long = max(self.long, right + left)
+            # 부모노드의 상태값으로 어느 쪽으로 갈 때 더 많은 거리를 갈 수 있는지 리턴
             return max(left, right)
         dfs(root)
         return self.long
