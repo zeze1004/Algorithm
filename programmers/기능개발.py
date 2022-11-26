@@ -1,27 +1,28 @@
 def solution(progresses, speeds):
+    left_day_list = []
 
-    answer = []
-    time = 0
-    bapo = 0
+    # 필요한 작업 일수 구하기
+    for p, s in zip(progresses, speeds):
+        left_progress = 100 - p
 
-    # 리스트 empty 될 때까지 반복
-    while progresses:
-        # 완성 시
-        if (progresses[0] + time*speeds[0]) >= 100:
-            progresses.pop(0)
-            speeds.pop(0)
-            bapo += 1  		# 작업이 완료 됐으므로 배포 개수 증가
-        # 미완성 시
+        if left_progress % s > 0:
+            left_day = int(left_progress / s) + 1
         else:
-            if bapo > 0:  # 현재 작업은 미완성이지만 앞서 작업이 완료 된 게 있을 시
-                answer.append(bapo)
-                bapo = 0
-            time += 1
-    answer.append(bapo)  # 마지막 배포 추가
+            left_day = int(left_progress / s)
+        left_day_list.append(left_day)
+
+    # 배포 일정 구하기
+    answer = []
+    ans = 1
+    pre_num = left_day_list.pop(0)
+    while left_day_list:
+        next_num = left_day_list.pop(0)
+        if pre_num < next_num:
+            pre_num = next_num
+            answer.append(ans)
+            ans = 1
+        else:
+            ans += 1
+    answer.append(ans)
+
     return answer
-
-
-progresses = list(map(int, input().split()))
-speeds = list(map(int, input().split()))
-
-solution(progresses, speeds)
