@@ -1,5 +1,5 @@
 import java.util.Stack;
-import java.lang.String
+import java.lang.String;
 
 public class MinRemoveToMakeValid1249 {
     public String minRemoveToMakeValid(String s) {
