@@ -24,7 +24,5 @@ public class B11656 {
         for (String s : stringList) {
             System.out.println(s);
         }
-
-
     }
 }
