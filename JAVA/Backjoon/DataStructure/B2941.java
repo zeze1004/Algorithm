@@ -8,38 +8,12 @@ public class B2941 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
 
-        System.out.println(revertCroAlpha(input));
-    }
+        String[] croAlpha = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
 
-    private static int revertCroAlpha(String input) {
-
-        while (!input.isEmpty()) {
-            if (input.contains("c=")) {
-                input = input.replace("c=", "0");
-            }
-            if (input.contains("c-")) {
-                input = input.replace("c-", "0");
-            }
-            if (input.contains("dz=")) {
-                input = input.replace("dz=", "0");
-            }
-            if (input.contains("d-")) {
-                input = input.replace("d-", "0");
-            }
-            if (input.contains("lj")) {
-                input = input.replace("lj", "0");
-            }
-            if (input.contains("nj")) {
-                input = input.replace("nj", "0");
-            }
-            if (input.contains("s=")) {
-                input = input.replace("s=", "0");
-            }
-            if (input.contains("z=")) {
-                input = input.replace("z=", "0");
-            }
-            break;
+        for (String alpha : croAlpha) {
+            input = input.replace(alpha, "0");
         }
-        return input.length();
+
+        System.out.println(input.length());
     }
 }
