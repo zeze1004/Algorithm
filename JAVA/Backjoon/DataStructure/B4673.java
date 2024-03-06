@@ -1,11 +1,9 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.TreeSet;
 
 public class B4673 {
     public static void main(String[] args) throws IOException {
-        List<Integer> unSelfNum = new ArrayList<>();
+        TreeSet<Integer> unSelfNum = new TreeSet<>();
 
         for (int i = 1; i <= 10000; i++) {
             String numS = String.valueOf(i);
@@ -17,8 +15,6 @@ public class B4673 {
             }
             unSelfNum.add(sumN);
         }
-
-        Collections.sort(unSelfNum);
 
         for (int i = 1; i <= 10000; i++) {
             if (!unSelfNum.contains(i))
