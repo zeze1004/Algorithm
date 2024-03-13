@@ -90,18 +90,15 @@ public class P77484 {
             }
         }
 
-        switch (matching) {
-            case 6: return new int[] {1, 1};
-            case 5: return new int[] {2, 2};
-            case 4: return new int[] {3, 3};
-            case 3: return new int[] {4, 4};
-            case 2: return new int[] {5, 5};
-            case 1: return new int[] {6, 6};
-            case 0: return new int[] {6, 6};
-        }
+        return switch (matching) {
+            case 6 -> new int[] {1, 1};
+            case 5 -> new int[] {2, 2};
+            case 4 -> new int[] {3, 3};
+            case 3 -> new int[] {4, 4};
+            case 2 -> new int[] {5, 5};
+            case 1, 0 -> new int[] {6, 6};
+            default -> null;
+        };
 
-
-
-        return null;
     }
 }
