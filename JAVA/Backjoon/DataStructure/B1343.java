@@ -18,24 +18,17 @@ public class B1343 {
                 i++;
             } else {
                 while (i < board.length() && board.charAt(i) == 'X') {
-                    count++;
-                    i++;
+                    count++; i++;
                 }
-                if (count == 2) {
-                    ans.append("BB");
-                } else if (count == 4) {
-                    ans.append("AAAA");
-                } else if (count % 4 == 2) {
-                    int tmp = count / 4;
-                    for (int j = 4; j < count; j+=4) {
+                if (count == 2) ans.append("BB");
+                else if (count == 4) ans.append("AAAA");
+                else if (count % 4 == 2) {
+                    for (int j = 4; j < count; j+=4)
                         ans.append("AAAA");
-                    }
                     ans.append("BB");
                 } else if (count % 4 == 0) {
-                    int tmp = count / 4;
-                    for (int j = 0; j < tmp; j++) {
+                    for (int j = 4; j <= count; j+=4)
                         ans.append("AAAA");
-                    }
                 } else {
                     System.out.println(-1);
                     return;
