@@ -1,42 +1,40 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.StringTokenizer;
 
 public class B5635 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<String> birthList = new ArrayList<>();
-
         int num = Integer.parseInt(br.readLine());
+        StringTokenizer st;
+
+        String[] names = new String[num];
+        LocalDate[] birthDays = new LocalDate[num];
+
         for (int i = 0; i < num; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
+            st = new StringTokenizer(br.readLine());
 
             String name = st.nextToken();
-            String day = st.nextToken();
-            if (day.length() == 1) {
-                day = "0" + day;
-            }
-            String month = st.nextToken();
-            if (month.length() == 1) {
-                month = "0" + month;
-            }
-            String year = st.nextToken();
+            int day = Integer.parseInt(st.nextToken());
+            int month = Integer.parseInt(st.nextToken());
+            int year = Integer.parseInt(st.nextToken());
+            LocalDate birth = LocalDate.of(year, month, day);
 
-            String tmp = year + month + day + name;
-            birthList.add(tmp);
+            System.out.println(birth);
+
+            names[i] = name;
+            birthDays[i] = birth;
         }
-        Collections.sort(birthList);
 
-        StringBuilder sb = new StringBuilder(birthList.get(num - 1));
-        sb.replace(0, 8, "");
-        System.out.println(sb);
+        int minIdx = 0, maxIdx = 0;
+        for (int i = 1; i < num; i++) {
+            if (birthDays[i].isBefore(birthDays[minIdx])) minIdx = i;
+            if (birthDays[i].isAfter(birthDays[maxIdx])) maxIdx = i;
+        }
 
-        sb = new StringBuilder(birthList.get(0));
-        sb.replace(0, 8, "");
-        System.out.println(sb);
+        System.out.println(names[maxIdx]);
+        System.out.println(names[minIdx]);
     }
 }
