@@ -12,7 +12,6 @@ class Solution {
             output += Math.max(list.get(i) - num, 0);
             num++;
         }
-        
         return output;
     }
 }
