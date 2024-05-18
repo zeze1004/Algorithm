@@ -11,7 +11,7 @@ class Solution:
         root.left = self.removeLeafNodes(root.left, target)
         root.right = self.removeLeafNodes(root.right, target)
 
-        if root.val == target and root.left == None and root.right == None:
+        if root.val is target and root.left is None and root.right is None:
             return None
         
         return root
