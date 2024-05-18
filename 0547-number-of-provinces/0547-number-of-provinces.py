@@ -10,6 +10,8 @@ class Solution:
         return output
 
     def dfs(self, isConnected: List[List[int]], visited: List[bool], city: int):
+        if visited[city] is True:
+            return
         visited[city] = True
         for i in range(len(isConnected[city])):
             if isConnected[city][i] == 1 and not visited[i]:
