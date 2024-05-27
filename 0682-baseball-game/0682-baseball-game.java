@@ -15,11 +15,6 @@ class Solution {
             }
         }
 
-        int sum = 0;
-        for (Integer i : output) {
-            sum += i;
-        }
-
-        return sum;
+        return output.stream().mapToInt(i -> i).sum();
     }
 }
