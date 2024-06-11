@@ -4,7 +4,7 @@ class Solution {
         Arrays.sort(deck);
         
         // 결과를 저장할 큐를 생성
-        LinkedList<Integer> resultQueue = new LinkedList<>();
+        Deque<Integer> resultQueue = new LinkedList<>(); // deque ?A?
         
         // 가장 큰 카드부터 작은 카드 순서로 배치
         for (int i = deck.length - 1; i >= 0; i--) {
