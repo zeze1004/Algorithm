@@ -1,17 +1,38 @@
 class Solution {
     public int clumsy(int n) {
-        int sign = 1, output = 0;
+        int output = n, sign = 0;
+        int idx =  n / 4; int t = 0; int plus = 0;
+        List<Integer> tmp = new ArrayList<>();
+        for (int i = 0; i < n; i+=4) { // i = 0, 4, 8
+            if (idx == 0) {
+                t = i;
+                break;
+            }
+            output = (n - i) * (n - i - 1); // (10 * 9), (6 * 5)
+            output = output / (n - i - 2); // (output / 8), (output / 4)
+            plus += n - i - 3;            // (output + 7), (ouptut + 3)
+            System.out.printf("output: %d\n", output);
+            tmp.add(output);
+            idx--;
+        }
 
-        for (int i = n; i > 0; i -= 4) {
-            int tmp = i;
-            if (i - 1 > 0) tmp *= i - 1;
-            if (i - 2 > 0) tmp /= i - 2;
-            output += sign * tmp;
-
-            if (i - 3 > 0) output += i - 3;
-            sign = -1;
+        if (n % 4 != 0) { // idx = 1, 2, 3 {
+            if (n % 4 == 1 || n % 4 == 2) tmp.add(n - t);
+            else if (n % 4 == 3) {
+                output = (n - t) * (n - t - 1);
+                output = output / (n - t - 2);
+                tmp.add(output);
+            }
         }
         
-        return output;
+
+
+        int output2 = tmp.get(0);
+        for (int i = 1; i < tmp.size(); i++) {
+            System.out.println(output2);
+            output2 -= tmp.get(i);
+        }
+
+        return output2 + plus;
     }
 }
