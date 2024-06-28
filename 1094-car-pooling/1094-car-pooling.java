@@ -1,23 +1,21 @@
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
-        int passinger = 0, start = 1, end = 2;
-        int tmpCapacity = capacity;
-        int[] load = new int[1001]; 
-        int idx = 0;
+        int currentPassingerNum[] = new int[1001];
+        int passingerNum = 0, start = 1, end = 2;
 
-        for (int[] trip : trips) {
-            load[trip[start]] += trip[passinger];
-            load[trip[end]] -= trip[passinger];
+        for (int trip[] : trips) {
+            currentPassingerNum[trip[start]] += trip[passingerNum];
+            currentPassingerNum[trip[end]] -= trip[passingerNum];
         }
 
-        for (Integer l : load) {
+        // for (int n : currentPassingerNum) System.out.printf("%d ", n);
+
+        for (int i = 0; i < 1001; i++) {
             if (capacity < 0) return false;
-            capacity -= l;
-            idx++; 
+            capacity -= currentPassingerNum[i];
+            // System.out.printf("capacity: %d, currentN: %d\n", capacity, currentPassingerNum[i]);
         }
 
-        // for (Integer i : load) System.out.printf("%d ", i);
-
-        return true;    
+        return true;
     }
 }
