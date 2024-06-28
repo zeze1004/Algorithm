@@ -5,19 +5,18 @@ class Solution {
         int candy = 1;
         int idx = 0;
 
-        while (candy <= candies) {
+        while (true) {
             System.out.printf("idx: %d\n", idx);
+
+            if (candy >= candies) {
+                output[idx % num_people] += candies;
+                break;
+            }
 
             output[idx % num_people] += candy;
             candies -= candy;
             idx++; candy++;
         }
-
-        if (output[num_people - 1] == 0) {
-            output[num_people - 1] = candies;
-        }
-
-
         
         return output;
     }
