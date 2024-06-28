@@ -6,7 +6,7 @@ class Solution {
             energy[i]= Math.max(energy[i], (energy[i]+energy[i-k]));
         }
 
-        for (Integer i : dp) System.out.println(i);
+        for (Integer i : energy) System.out.println(i);
         
         for (int i = 0; i < k; i++) output = Math.max(output, energy[energy.length-i-1]);
         return output;
