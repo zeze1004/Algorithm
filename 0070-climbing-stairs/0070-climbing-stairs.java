@@ -1,14 +1,16 @@
 class Solution {
     public int climbStairs(int n) {
-        int[] stairs = new int[n];
-        stairs[0] = 1;
-        stairs[1] = 2;
-
-        for (int i = 2; i < n; i++) {
-            stairs[i] = stairs[i - 2] + stairs[i - 1];
-            // System.out.println(stairs[i]);
+        List<Integer> stairs = new ArrayList<>();
+        stairs.add(1);
+        stairs.add(2);
+        
+        for (int i = 2; i < 45; i++) {
+            int tmp = stairs.get(i - 2) + stairs.get(i - 1);
+            stairs.add(tmp);
         }
 
-        return stairs[n - 1];
+        int output = (stairs.get(n - 1)).intValue();
+
+        return output;
     }
 }
