@@ -1,20 +1,43 @@
 class Solution {
     public String mergeAlternately(String word1, String word2) {
-        StringBuilder output = new StringBuilder();
-        int w1 = 0, w2 = 0;
+        int length1 = word1.length();
+        int length2 = word2.length();
+        int maxLength = Math.max(word1.length(), word2.length());
         
-        while (true) {
-            if (word1.length() == w1 && word2.length() == w2) break;
-            if (word1.length() > w1) {
-                output.append(word1.charAt(w1));
-                w1++;
-            } 
-            if (word2.length() > w2) {
-                output.append(word2.charAt(w2));
-                w2++;
+        StringBuilder sb = new StringBuilder();
+        if (length1 > length2) {
+            for (int i = 0; i < length2; i++) {
+                sb.insert(i, word1.charAt(i));
+            }
+            for (int i = 0; i < length2; i++) {
+                sb.insert(i * 2 + 1, word2.charAt(i));
+            }
+            for (int i = length2; i < length1; i++) {
+                sb.append(word1.charAt(i));
+            }
+            return sb.toString();
+        }
+        else if (length1 < length2) {
+            for (int i = 0; i < length1; i++) {
+                sb.insert(i, word1.charAt(i));
+            }
+            System.out.println(sb);
+            for (int i = 0; i < length1; i++) {
+                sb.insert(i * 2 + 1, word2.charAt(i));
+            }
+            for (int i = length1; i < length2; i++) {
+                sb.append(word2.charAt(i));
+            }
+            return sb.toString();
+        }
+        else {
+            for (int i = 0; i < length1; i++) {
+                sb.insert(i, word1.charAt(i));
+            }
+            for (int i = 0; i < length1; i++) {
+                sb.insert(i * 2 + 1, word2.charAt(i));
             }
         }
-
-        return output.toString(); 
+        return sb.toString();
     }
 }
