@@ -1,26 +1,21 @@
 class Solution {
     public String reverseVowels(String s) {
         Deque<Character> vowels = new LinkedList<>();
-        StringBuilder output = new StringBuilder();
+        StringBuilder sb = new StringBuilder(s);
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'a' ||s.charAt(i) == 'A' || s.charAt(i) == 'e' ||
-                s.charAt(i) == 'E' || s.charAt(i) == 'i' || s.charAt(i) == 'I' ||
-                s.charAt(i) == 'o' || s.charAt(i) == 'O' || s.charAt(i) == 'u' || s.charAt(i) == 'U') {
-                    vowels.push(s.charAt(i));
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == 'a' || sb.charAt(i) == 'e' || sb.charAt(i) == 'i' || sb.charAt(i) == 'o' || sb.charAt(i) == 'u' || sb.charAt(i) == 'A' || sb.charAt(i) == 'E' || sb.charAt(i) == 'I' || sb.charAt(i) == 'O' || sb.charAt(i) == 'U') {
+                char c = sb.charAt(i);
+                vowels.add(c);
             }
         }
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'a' ||s.charAt(i) == 'A' || s.charAt(i) == 'e' ||
-                s.charAt(i) == 'E' || s.charAt(i) == 'i' || s.charAt(i) == 'I' ||
-                s.charAt(i) == 'o' || s.charAt(i) == 'O' || s.charAt(i) == 'u' || s.charAt(i) == 'U') {
-                    output.append(vowels.pop());
-            } else {
-                output.append(s.charAt(i));
-            } 
-        } 
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == 'a' || sb.charAt(i) == 'e' || sb.charAt(i) == 'i' || sb.charAt(i) == 'o' || sb.charAt(i) == 'u' || sb.charAt(i) == 'A' || sb.charAt(i) == 'E' || sb.charAt(i) == 'I' || sb.charAt(i) == 'O' || sb.charAt(i) == 'U') {
+                sb.setCharAt(i, vowels.pollLast());
+            }
+        }
 
-        return output.toString();
+        return sb.toString();
     }
 }
