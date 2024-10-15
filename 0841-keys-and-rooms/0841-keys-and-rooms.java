@@ -1,24 +1,24 @@
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-        boolean[] visited = new boolean[rooms.size()];
-        visited[0] = true;
-        dfs(rooms, visited, 0);
-        
-        for (boolean b : visited) {
-            if (!b) return false;
+        boolean[] isVisited = new boolean[rooms.size()];
+        // 첫 번째 방부터 탐색
+        dfs(rooms, isVisited, 0);
+            
+        for (int i = 0; i < isVisited.length; i++) {
+            if (isVisited[i] == false) return false;
         }
+
         return true;
     }
 
-    public void dfs(List<List<Integer>> rooms, boolean[] visited, int roomNum) {
-        List<Integer> keys = rooms.get(roomNum);
-        for (int i = 0; i < keys.size(); i++) {
-            int key = (int) keys.get(i);
-            if (!visited[key]) {
-                visited[key] = true;
-                dfs(rooms, visited, key);
-            }
-        }
-    }
+    public void dfs(List<List<Integer>> rooms, boolean[] isVisited, int idx) {
+        if (isVisited[idx]) return;
+        else isVisited[idx] = true;
 
-}
+        for (int key : rooms.get(idx)) {
+            if (isVisited[key] == false) {
+                dfs(rooms, isVisited, key);
+            }
+        }    
+    }
+} 
