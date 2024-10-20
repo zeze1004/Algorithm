@@ -30,19 +30,7 @@ class Solution {
             }
 
             if (grid[nextX][nextY] == 0) {
-                // System.out.println("0");
-                System.out.printf("%d, %d\n", nextX, nextY);
                 output++;
-            // } else if (grid[nextX][nextY] == 1) {
-            //     if (nextX == 0 || nextX == grid.length - 1 || nextY == 0 || nextY == grid[0].length - 1) {
-            //         output++;
-            //         System.out.printf("%d, %d\n", nextX, nextY);
-            //         if ((nextX == 0 && nextY == 0) || (nextX == grid.length - 1 && nextY == grid[0].length) ||
-            //         (nextX == grid.length - 1 && nextY == 0) || (nextX == grid.length - 1 && nextY == grid[0].length)) {
-            //             output++;
-            //             System.out.println("333");
-            //         }
-            //     }
             }
         }
     }
