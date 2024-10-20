@@ -1,32 +1,49 @@
 class Solution {
+    int[] dx = new int[]{0, 0, 1, -1};
+    int[] dy = new int[]{-1, 1, 0, 0};
+    int output = 0;
     public int islandPerimeter(int[][] grid) {
-        boolean[][] visited = new boolean[grid.length][grid[0].length];
-
+        boolean[][] isVisited = new boolean[grid.length][grid[0].length];
+        
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (!visited[i][j] && grid[i][j] == 1) { // 처음 땅을 발견하고 더 이상 순회하지 않음
-                    return dfs(i, j, grid, visited);
+                if (grid[i][j] == 1 && !isVisited[i][j]) {
+                    dfs(grid, isVisited, i, j);
                 }
             }
         }
-        return 0;
+
+        return output;
     }
 
-    public int dfs(int x, int y, int[][] grid, boolean[][] visited) {
-        if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length || grid[x][y] == 0) { // 범위를 초과한 경우는 경계가 드러나는 땅이라고 판단
-            return 1;
-        } else if (visited[x][y]) { // 주위에 이미 방문한 땅이 있으면 경계가 아니라 0을 리턴
-            return 0;
-        }
+    private void dfs(int[][] grid, boolean[][] isVisited, int x, int y) {
+        if (isVisited[x][y]) return;
+        isVisited[x][y] = true;
         
-        visited[x][y] = true;
-        int count = 0;
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
 
-        count += dfs(x - 1, y, grid, visited);
-        count += dfs(x + 1, y, grid, visited);
-        count += dfs(x, y - 1, grid, visited);
-        count += dfs(x, y + 1, grid, visited);
+            if (nextX < 0 || nextY < 0 || nextX >= grid.length || nextY >= grid[0].length) {
+                output++;
+                continue;
+            }
 
-        return count;
+            if (grid[nextX][nextY] == 0) {
+                // System.out.println("0");
+                System.out.printf("%d, %d\n", nextX, nextY);
+                output++;
+            // } else if (grid[nextX][nextY] == 1) {
+            //     if (nextX == 0 || nextX == grid.length - 1 || nextY == 0 || nextY == grid[0].length - 1) {
+            //         output++;
+            //         System.out.printf("%d, %d\n", nextX, nextY);
+            //         if ((nextX == 0 && nextY == 0) || (nextX == grid.length - 1 && nextY == grid[0].length) ||
+            //         (nextX == grid.length - 1 && nextY == 0) || (nextX == grid.length - 1 && nextY == grid[0].length)) {
+            //             output++;
+            //             System.out.println("333");
+            //         }
+            //     }
+            }
+        }
     }
 }
