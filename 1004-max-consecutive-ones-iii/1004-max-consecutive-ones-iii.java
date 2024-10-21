@@ -16,7 +16,7 @@ class Solution {
                     }
                 }
             }
-            output = Math.max(output, end - start + 1); // end와 start가 동일하게 시작해서 차이를 주고자 1 더함
+            output = Math.max(output, end - start + 1); // end - start + 1을 해야 해당 인덱스 범위의 원소 개수임
         }
         return output;    
     }
