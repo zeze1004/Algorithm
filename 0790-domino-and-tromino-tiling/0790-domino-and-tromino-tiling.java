@@ -6,7 +6,7 @@ class Solution {
         dp[3] = 5;
 
         for (int i = 4; i < 1000; i++) {
-            dp[i] = 2 * dp[i - 1] + dp[i - 3];
+            dp[i] = (2 * dp[i - 1] + dp[i - 3]) % 1000000007;
         }
 
         return (int)dp[n];
