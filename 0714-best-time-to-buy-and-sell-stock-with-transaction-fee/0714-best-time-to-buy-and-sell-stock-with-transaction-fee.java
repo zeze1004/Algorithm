@@ -1,14 +1,14 @@
 class Solution {
     public int maxProfit(int[] prices, int fee) {
-        int sell = 0;         // 첫 날에는 주식을 팔 수 없음
-        int buy = -prices[0]; // 첫 날에 주식을 구매했을 때 보유액
+        int buy = -prices[0]; // 첫 날 샀을 때 금액
+        int sell = 0;         // 첫 날 안 사서 못 팔았을 때 금액
 
-        // 각 날에 대한 DP 계산
         for (int i = 1; i < prices.length; i++) {
-            sell = Math.max(sell, buy + prices[i] - fee); // 주식을 팔지 않거나, 팔았을 때 금액 비교
-            buy = Math.max(buy, sell - prices[i]); // 주식을 사지 않거나, 주식을 판 금액으로 주식을 샀을 때의 금액 비교
-        }
+            buy = Math.max(buy, sell - prices[i]); // 안 사거나 팔고 남은 금액에서 주식을 사거나
+            sell = Math.max(sell, buy + prices[i] - fee); // 안 팔거나 사고 남은 금액에 수익을 더하거나
+            // fee는 사고 팔 때 한 번만 제하면 됨
+        }        
 
-        return sell; // 최종적으로 주식을 팔았을 때 최대 이익
+        return sell; // 팔고 남았을 때 금액이 최대 수익
     }
 }
