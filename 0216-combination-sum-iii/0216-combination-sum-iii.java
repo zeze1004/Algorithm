@@ -1,27 +1,24 @@
 class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> output = new ArrayList<>();
-        backtracking(output, new ArrayList<Integer>(), k, n, 1, 0);
+        backtracking(output, new ArrayList<Integer>(), k, n, 0, 1);
 
         return output;
     }
 
-    private void backtracking(List<List<Integer>> output, List<Integer> tmp, int k, int n, int index, int sum) {
-        if (tmp.size() > k || sum > n || (tmp.size() == k && sum != n)) return;
+    private void backtracking(List<List<Integer>> output, List<Integer> tmp, int k, int n, int sum, int index) {
+        if (tmp.size() > k || sum > n || index > 9) return;
         if (tmp.size() == k && sum == n) {
             output.add(new ArrayList<>(tmp));
             return;
         }
-        
+
         for (int i = index; i < 10; i++) {
-            if (tmp.contains(i)) continue;
             tmp.add(i);
-            
-            backtracking(output, tmp, k, n, i + 1, sum + i);
-            
-            if (!tmp.isEmpty()) {
-                tmp.remove(tmp.size() - 1);
-            }
+            sum += i;
+            backtracking(output, tmp, k, n, sum, i + 1);
+            tmp.remove(tmp.size() - 1);
+            sum -= i;
         }
     }
 }
