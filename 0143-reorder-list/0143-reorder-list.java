@@ -19,18 +19,22 @@ class Solution {
             fast = fast.next.next;
         }
 
-        ListNode afterMidNodes = slow.next;
+        ListNode midNode = slow.next;
         slow.next = null;
-        ListNode prev = null;
-        while (afterMidNodes != null) {
-            ListNode next = afterMidNodes.next;
-            afterMidNodes.next = prev;
-            prev = afterMidNodes;
-            afterMidNodes = next;
+        ListNode afterMidNodes = null; // afterMidNodes에 head의 중간노드들을 뒤집어서 붙여줌
+        // midNode부터 끝까지 뒤집기
+        while (midNode != null) {
+            ListNode next = midNode.next;
+            midNode.next = afterMidNodes;
+            afterMidNodes = midNode;
+            midNode = next;
         }
+        // 결과적으로 afterMidNodes는 원래 head의 끝 노드를 가리킴
+        // ex. head = [1,2,3,4,5]
+        // 처음 midNode = 3
+        // while문이 끝났을 때의 afterMidNodes = [5, 4, 3]
         
-        ListNode head1 = head;
-        ListNode head2 = prev;
+        ListNode head2 = afterMidNodes;
         while (head2 != null) {
             ListNode next1 = head.next;
             ListNode next2 = head2.next;
