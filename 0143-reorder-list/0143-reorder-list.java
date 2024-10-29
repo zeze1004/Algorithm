@@ -11,6 +11,7 @@
 class Solution {
     public void reorderList(ListNode head) {
         if (head == null || head.next == null) return;
+     
         ListNode slow = head;
         ListNode fast = head;
 
@@ -19,22 +20,21 @@ class Solution {
             fast = fast.next.next;
         }
 
-        ListNode midNode = slow.next;
-        slow.next = null;
-        ListNode afterMidNodes = null; // afterMidNodes에 head의 중간노드들을 뒤집어서 붙여줌
-        // midNode부터 끝까지 뒤집기
-        while (midNode != null) {
-            ListNode next = midNode.next;
-            midNode.next = afterMidNodes;
-            afterMidNodes = midNode;
-            midNode = next;
+        ListNode afterMidNode = slow.next;  // 가운데 노드의 next 노드
+        slow.next = null;                   // 중간 이후의 노드를 만들어주기위해 연결고리 제거. 
+        ListNode head2 = null;              // 뒤집어진 중간노드들 링크드리스트 중 맨 앞을 차치할 포인터
+                                            // head2 뒤에 중간노드들을 붙여줌
+        // afterMidNode부터 끝까지 뒤집기
+        while (afterMidNode != null) {
+            ListNode next = afterMidNode.next;
+            afterMidNode.next = head2;
+            head2 = afterMidNode;
+            afterMidNode = next;
         }
         // 결과적으로 afterMidNodes는 원래 head의 끝 노드를 가리킴
         // ex. head = [1,2,3,4,5]
-        // 처음 midNode = 3
-        // while문이 끝났을 때의 afterMidNodes = [5, 4, 3]
+        // while문이 끝났을 때의 head2 = [5, 4]
         
-        ListNode head2 = afterMidNodes;
         while (head2 != null) {
             ListNode next1 = head.next;
             ListNode next2 = head2.next;
