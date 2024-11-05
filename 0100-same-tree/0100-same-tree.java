@@ -14,14 +14,16 @@
  * }
  */
 class Solution {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return isMirror(p, q);
-    }
+    public boolean isSameTree(TreeNode p, TreeNode q) { 
+        if (p == null && q == null) return true;
+        if (p == null || q == null) return false;
+        if (p.val != q.val) return false;
+        
+        boolean left = isSameTree(p.left, q.left);
+        boolean right = isSameTree(p.right, q.right);   
 
-    private boolean isMirror(TreeNode t1, TreeNode t2) {
-        if (t1 == null && t2 == null) return true;
-        if (t1 == null || t2 == null) return false;
-
-        return (t1.val == t2.val) && isMirror(t1.left, t2.left) && isMirror(t1.right, t2.right);
+        if (left && right) return true;
+        return false;
     }
 }
+     
