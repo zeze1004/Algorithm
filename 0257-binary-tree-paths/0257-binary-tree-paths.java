@@ -16,26 +16,33 @@
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> output = new ArrayList<>();
-        if (root != null) {
-            backtrack(root, output, new StringBuilder());
+        StringBuilder sb = new StringBuilder();
+        sb.append(root.val);
+        
+        if (root.left == null && root.right == null) {
+            output.add(sb.toString());
+            return output;
         }
+        if (root.left != null) recursive(root.left, output, new StringBuilder(sb));
+        if (root.right != null) recursive(root.right, output, new StringBuilder(sb));
+
         return output;
     }
 
-    private void backtrack(TreeNode root, List<String> output, StringBuilder sb) {
+    private void recursive(TreeNode root, List<String> output, StringBuilder sb) {
+        if (root.left == null && root.right == null) {
+            sb.append('-').append('>');
+            sb.append(root.val);
+            // output.add(sb.toString());
+            output.add(new StringBuilder(sb).toString());
+            return;
+        }
         if (root == null) return;
 
-        int len = sb.length(); // 현재 경로 길이를 저장
+        sb.append('-').append('>');
         sb.append(root.val);
 
-        if (root.left == null && root.right == null) {
-            output.add(sb.toString());
-        } else {
-            sb.append("->");
-            if (root.left != null) backtrack(root.left, output, sb);
-            if (root.right != null) backtrack(root.right, output, sb);
-        }
-
-        sb.setLength(len); // 원래 길이로 복원
+        if (root.left != null) recursive(root.left, output, new StringBuilder(sb));
+        if (root.right != null) recursive(root.right, output, new StringBuilder(sb));
     }
 }
