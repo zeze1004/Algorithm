@@ -1,6 +1,7 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> output = new ArrayList<>(); 
+        Arrays.sort(candidates);
         backtrack(output, new ArrayList<Integer>(), candidates, target, 0);
 
         return output;
@@ -14,7 +15,7 @@ class Solution {
 
         // 재귀
         for (int i = idx; i < candidates.length; i++) {
-            if (target < candidates[i]) continue; // 가지치기
+            if (target < candidates[i]) return; // 가지치기: 개별 원소가 target 보다 크면 값이 될 수 없기에 종료
 
             tmp.add(candidates[i]);
             backtrack(output, tmp, candidates, target - candidates[i], i); // 같은 숫자 중복 사용 가능하므로 동일한 idx 전달
